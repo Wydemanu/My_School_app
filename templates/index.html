@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Todas as Atividades{% endblock %}
+
+{% block content %}
+    <h1>Atividades Extracurriculares</h1>
+    {% if activities %}
+        <ul>
+            {% for activity in activities %}
+                <li>
+                    <a href="{{ url_for("activity_detail", activity_id=activity.id) }}">{{ activity.name }} - {{ activity.school }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma atividade encontrada. <a href="{{ url_for("add_activity") }}">Adicione uma!</a></p>
+    {% endif %}
+{% endblock %}
